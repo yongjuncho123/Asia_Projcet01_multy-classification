@@ -1,5 +1,5 @@
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
+from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException, ElementClickInterceptedException
 from selenium.webdriver.common.keys import Keys
 import pandas as pd
 import re
@@ -39,6 +39,10 @@ for i in range(1,51):
                 print(NoSuchElementException)
             except StaleElementReferenceException as e:
                 print(e)
+            
+            except ElementClickInterceptedException as e:
+                print(ElementClickInterceptedException)
+
             except:
                 pass
 
@@ -51,6 +55,8 @@ for i in range(1,51):
                 print(NoSuchElementException)
             except StaleElementReferenceException as e:
                 print(e)
+            except ElementClickInterceptedException as e:
+                print(ElementClickInterceptedException)
             except:
                 pass
 
@@ -63,6 +69,8 @@ for i in range(1,51):
                 print(NoSuchElementException)
             except StaleElementReferenceException as e:
                 print(e)
+            except ElementClickInterceptedException as e:
+                print(ElementClickInterceptedException)
             except:
                 pass
             
@@ -75,7 +83,12 @@ for i in range(1,51):
         driver.find_element_by_xpath('//*[@id="NOVELOUS-CONTENTS"]/section[4]/ul/li[6]/a'.format(i)).click() # 6으로 고정되니까 그대로
         time.sleep(2)
         for k in range(1, 51):
-            driver.find_element_by_xpath('//*[@id="SECTION-LIST"]/ul/li[{}]/a[2]'.format(k)).click()
+            try:
+                driver.find_element_by_xpath('//*[@id="SECTION-LIST"]/ul/li[{}]/a[2]'.format(k)).click()
+
+            except ElementClickInterceptedException as e:
+                print(ElementClickInterceptedException)
+                pass
 
             x_title = '//*[@id="board"]/div[1]/div[3]/h2/a' # 타이틀 제목이 담긴 x_path
             x_intro = '//*[@id="STORY-BOX"]/p[1]' # 인트로 내용이 담긴 x_path
@@ -90,6 +103,8 @@ for i in range(1,51):
                 print(NoSuchElementException)
             except StaleElementReferenceException as e:
                 print(e)
+            except ElementClickInterceptedException as e:
+                print(ElementClickInterceptedException)
             except:
                 pass
 
@@ -102,6 +117,8 @@ for i in range(1,51):
                 print(NoSuchElementException)
             except StaleElementReferenceException as e:
                 print(e)
+            except ElementClickInterceptedException as e:
+                print(ElementClickInterceptedException)
             except:
                 pass
 
@@ -114,6 +131,8 @@ for i in range(1,51):
                 print(NoSuchElementException)
             except StaleElementReferenceException as e:
                 print(e)
+            except ElementClickInterceptedException as e:
+                print(ElementClickInterceptedException)
             except:
                 pass
     time.sleep(1)        
