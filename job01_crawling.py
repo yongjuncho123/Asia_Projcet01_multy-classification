@@ -10,7 +10,7 @@ option = webdriver.ChromeOptions()
 option.add_argument('lang=kr_KR')
 driver = webdriver.Chrome('C:/Users/ChoYJ/Desktop/Data_Study/Asia/1st_team_project(multi_classification)/Asia_Projcet01_multy-classification/chromedriver.exe', options=option)
 url = "https://novel.munpia.com/page/hd.platinum/group/pl.serial/finish/true/view/allend"
-category = category = ['판타지', '퓨전', '현대판타지', '무협', '스포츠', '대체역사', '로맨스', "SF", 'BL', '전쟁·밀리터리']
+category = ['판타지', '퓨전', '현대판타지', '무협', '스포츠', '대체역사', '로맨스', "SF", 'BL', '전쟁·밀리터리']
 
 
 driver.get(url)

@@ -1,0 +1,39 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from konlpy.tag import Okt
+from tensorflow import keras
+from sklearn.preprocessing import LabelEncoder
+from keras.utils import to_categorical
+from keras.layers import *
+from keras.models import *
+
+model = load_model('../models/Munpia_model_0.9324960708618164.h5')
+preds = model.predict(X_pad)
+predicts = []
+for pred in preds:
+    most = label[np.argmax(pred)]
+    pred[np.argmax(pred)] = 0
+    second = label[np.argmax(pred)]
+    predicts.append([most, second])
+df['predict'] = predicts
+
+
+print(df.head(30))
+# hdf5 에러 발생 시 찾아가서 지우면 된다.
+
+df['OX'] = 0
+for i in range(len(df)):
+    if df.loc[i, 'genres'] in df.loc[i, 'predict']:
+        df.loc[i, 'OX'] = '0'
+    else:
+        df.loc[i, 'OX'] = 'X'
+print(df.head(30))
+
+
+for i in range(len(df)):
+    if df['genres'][i] != df['predict'][i]:
+        print(df.iloc[i])
+print(df['OX'].value_counts())
+print(df['OX'].value_counts()/len(df))

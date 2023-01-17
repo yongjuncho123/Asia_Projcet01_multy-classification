@@ -47,9 +47,9 @@ df = pd.read_csv('Moonpia_clawing_data\Munpia_crawling_data_final_revise.csv')
 
 df[df.isna().any(axis=1)] # NaN값 재확인
 
-for i in range(1, 6369):
+for i in range(len(df)):
     df['genres'][i] = df['genres'][i].split()[0] # 장르를 하나만 남기기(퓨전 드라마라면 퓨전만 남기기)
-for i in range(1, 6369):
+for i in range(len(df)):
     df['titles'][i] = df['titles'][i]+df['intros'][i] # 제목과 인트로 합치기
 
 df.drop('intros', axis = 1, inplace = True) # 인트로스를 드랍하고 드랍한 상태를 저장
